@@ -20,7 +20,6 @@ app.use(express.static("public"));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
-// 🛡️ Rota segura para listar perguntas
 app.get("/", async (req, res) => {
   try {
     const perguntas = await Pergunta.findAll({
@@ -89,5 +88,3 @@ app.get("/pergunta/:id", (req, res) => {
 });
 
 app.listen(3000, () => console.log("Server rodando"));
-
-// 1:09:18 aula
