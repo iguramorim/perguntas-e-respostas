@@ -1,0 +1,31 @@
+<%- include('partials/head.ejs') %>
+<%- include('partials/header.ejs') %>
+<section class="max-w-screen-md mx-auto p-5 mt-20">
+  <div class="rounded border border-zinc-200 shadow p-3">
+    <h1 class="text-xl font-bold">
+      <%= pergunta.titulo %>
+    </h1>
+    <p class="text-gray-600">
+      <%= pergunta.descricao %>
+    </p>
+
+    <form method="post" action="/salvarresposta" class="flex flex-col gap-3 mt-5">
+      <textarea class="border border-zinc-300 rounded shadow p-3 outline-blue-600" name="corpo" id="corpo" placeholder="responder pergunta" required></textarea>
+      <input type="hidden" name="perguntaId" value="<%= pergunta.id %>">
+      <button type="submit" class="bg-blue-600 hover:bg-blue-500 active:scale-95 transition-all text-white p-3 cursor-pointer rounded">
+        Responder
+      </button>
+    </form>
+  </div>
+
+  <div class="mt-10">
+    <h1 class="text-xl font-bold">Todas as respostas</h1>
+    <% respostas.forEach(resposta=> { %>
+    <div class="rounded border border-zinc-200 shadow p-3 flex flex-col justify-between mt-3">
+      <p>
+        <%= resposta.corpo %>
+      </p>
+    </div>
+    <% }) %>
+  </div>
+</section>
